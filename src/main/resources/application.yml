@@ -1,0 +1,34 @@
+server:
+  port: 12444
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.56.8:5432/postgres
+    username: student
+    password: 12345678
+    hikari:
+      connection-timeout: 10000
+      minimum-idle: 1
+      maximum-pool-size: 2
+      idle-timeout: 10000
+      max-lifetime: 30000
+      auto-commit: true
+  database:
+    driverClassName: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+    enabled: true
+    url: jdbc:postgresql://192.168.56.8:5432/postgres
+    user: student
+    password: 12345678
+
+limit:
+  default-limit: 10000
